@@ -126,25 +126,60 @@ const categoria = getCategory(player.flexoes);
 const classe = getClassName(categoria);
 const nivel = Math.floor(player.flexoes / 10);
 
+let icon = "⚔️";
+
+if(categoria === "Mythic") icon = "👑";
+if(categoria === "Legend") icon = "🛡️";
+if(categoria === "Epic") icon = "💎";
+
 ranking.innerHTML += `
-  <div class="player-card ${classe} rank-${index + 1}">
 
-    <div class="player-name">
-      #${index + 1} ${player.nome}
+<div class="player-card ${classe} rank-${index+1}">
+
+  <div class="rank-badge">
+    ${categoria}
+  </div>
+
+  <div class="player-row">
+
+    <div class="player-icon">
+      ${icon}
     </div>
 
-    <div class="player-info">
-      ${categoria} • Lv ${nivel}
+    <div class="player-main">
+
+      <div class="player-name">
+        ${player.nome}
+      </div>
+
+      <div class="player-level">
+        Lv ${nivel}
+      </div>
+
     </div>
 
-    <div class="player-info">
-      ${player.flexoes} flexões
+    <div class="player-score">
+      ${player.flexoes}
     </div>
 
   </div>
+
+</div>
+
 `;
 
 });
+
+document.getElementById("guildText").innerText =
+guildXP + " / 10000 XP";
+
+const porcentagem =
+Math.min((guildXP / 10000) * 100, 100);
+
+document.getElementById("guildBar").style.width =
+porcentagem + "%";
+
+}
 
 document.getElementById("guildText").innerText =
 guildXP + " / 10000 XP";
