@@ -37,15 +37,15 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-    // 🔴 COLE SEU CONFIG AQUI
+    // 🔥 SEU FIREBASE CONFIG (CORRIGIDO)
     const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "SEU_PROJETO.firebaseapp.com",
-      databaseURL: "https://SEU_PROJETO-default-rtdb.firebaseio.com",
-      projectId: "SEU_PROJETO",
-      storageBucket: "SEU_PROJETO.appspot.com",
-      messagingSenderId: "XXXX",
-      appId: "XXXX"
+      apiKey: "AIzaSyDSNZY4u4tJx9C2la-g_VeL_5VEVsXGvWc",
+      authDomain: "arenadasflexoes.firebaseapp.com",
+      databaseURL: "https://arenadasflexoes-default-rtdb.firebaseio.com",
+      projectId: "arenadasflexoes",
+      storageBucket: "arenadasflexoes.firebasestorage.app",
+      messagingSenderId: "858312051523",
+      appId: "1:858312051523:web:c7acbff534161c23f4bdf6"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -53,7 +53,6 @@
 
     const playersRef = ref(db, "players");
 
-    // 🔥 Tempo real
     onValue(playersRef, (snapshot) => {
       const data = snapshot.val();
 
