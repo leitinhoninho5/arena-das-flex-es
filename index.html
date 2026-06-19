@@ -127,7 +127,7 @@ const classe = getClassName(categoria);
 const nivel = Math.floor(player.flexoes / 10);
 
 ranking.innerHTML += `
-  <div class="player-card ${classe}">
+  <div class="player-card ${classe} rank-${index + 1}">
 
     <div class="player-name">
       #${index + 1} ${player.nome}
