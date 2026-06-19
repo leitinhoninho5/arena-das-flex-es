@@ -1,1 +1,62 @@
-index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arena das Flexões</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <main class="container">
+
+    <header class="hero">
+      <h1>⚔️ ARENA DAS FLEXÕES ⚔️</h1>
+      <p>O Reino dos Guerreiros das Flexões</p>
+    </header>
+
+    <section class="guild-box">
+      <h2>🔥 Guild XP</h2>
+
+      <div class="progress">
+        <div id="guildBar" class="progress-fill"></div>
+      </div>
+
+      <p id="guildText">0 / 10000 XP</p>
+    </section>
+
+    <section class="register-box">
+      <h2>Registrar Flexões</h2>
+
+      <input
+        type="text"
+        id="playerName"
+        placeholder="Seu nome"
+      >
+
+      <input
+        type="number"
+        id="pushups"
+        placeholder="Quantidade de flexões"
+      >
+
+      <button onclick="addPushups()">
+        Registrar Treino
+      </button>
+    </section>
+
+    <section class="ranking-box">
+      <h2>🏆 Ranking dos Guerreiros</h2>
+
+      <div id="ranking"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
