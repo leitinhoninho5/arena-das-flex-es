@@ -1,43 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arena das Flexões</title>
 
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      background: #111;
-      color: white;
-    }
-
-    #ranking {
-      margin-top: 20px;
-      font-size: 20px;
-    }
-
-    .item {
-      padding: 8px;
-      margin: 5px;
-      background: #222;
-      border-radius: 8px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>🏆 Arena das Flexões</h1>
+  <div class="background"></div>
 
-  <div id="ranking">Carregando ranking...</div>
+  <main class="container">
+
+    <header class="hero">
+      <h1>⚔️ ARENA DAS FLEXÕES ⚔️</h1>
+      <p>O Reino dos Guerreiros das Flexões</p>
+    </header>
+
+    <section class="guild-box">
+      <h2>🔥 Guild XP</h2>
+
+      <div class="progress">
+        <div id="guildBar" class="progress-fill"></div>
+      </div>
+
+      <p id="guildText">0 / 10000 XP</p>
+    </section>
+
+    <section class="register-box">
+      <h2>Registrar Flexões</h2>
+
+      <input type="text" id="playerName" placeholder="Seu nome">
+      <input type="number" id="pushups" placeholder="Quantidade de flexões">
+
+      <button onclick="addPushups()">Registrar Treino</button>
+    </section>
+
+    <section class="ranking-box">
+      <h2>🏆 Ranking dos Guerreiros</h2>
+
+      <div id="ranking">Carregando...</div>
+    </section>
+
+  </main>
 
   <!-- 🔥 FIREBASE -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { getDatabase, ref, onValue, set, update, increment }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-    // 🔥 SEU FIREBASE CONFIG (CORRIGIDO)
+    // 🔥 SEU CONFIG (já pronto pra usar)
     const firebaseConfig = {
       apiKey: "AIzaSyDSNZY4u4tJx9C2la-g_VeL_5VEVsXGvWc",
       authDomain: "arenadasflexoes.firebaseapp.com",
@@ -53,6 +68,7 @@
 
     const playersRef = ref(db, "players");
 
+    // 🔥 LER RANKING EM TEMPO REAL
     onValue(playersRef, (snapshot) => {
       const data = snapshot.val();
 
@@ -81,12 +97,27 @@
 
       lista.forEach((p, i) => {
         div.innerHTML += `
-          <div class="item">
+          <div>
             ${i + 1}º ${p.nome} — ${p.flexoes} flexões
           </div>
         `;
       });
     }
+
+    // 🔥 FUNÇÃO DO BOTÃO (REGISTRAR FLEXÕES)
+    window.addPushups = function () {
+      const name = document.getElementById("playerName").value;
+      const pushups = Number(document.getElementById("pushups").value);
+
+      if (!name || !pushups) return;
+
+      const userRef = ref(db, "players/" + name.toLowerCase());
+
+      update(userRef, {
+        name: name,
+        flexoes: increment(pushups)
+      });
+    };
 
   </script>
 
