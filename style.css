@@ -298,3 +298,40 @@ button:hover{
     }
 
 }
+
+.rank-badge{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.9;
+}
+
+.player-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.player-icon{
+    font-size:32px;
+    min-width:45px;
+}
+
+.player-main{
+    flex:1;
+}
+
+.player-level{
+    font-size:15px;
+    opacity:.9;
+}
+
+.player-score{
+    font-size:32px;
+    font-weight:bold;
+    color:#fff6cc;
+    text-shadow:0 0 10px rgba(255,255,255,.4);
+}
