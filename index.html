@@ -91,18 +91,70 @@
       render(lista);
     });
 
-    function render(lista) {
-      const div = document.getElementById("ranking");
-      div.innerHTML = "";
+function getCategory(pushups) {
+if (pushups >= 1000) return "Mythic";
+if (pushups >= 200) return "Legend";
+if (pushups >= 100) return "Epic";
+return "Veterano";
+}
 
-      lista.forEach((p, i) => {
-        div.innerHTML += `
-          <div>
-            ${i + 1}º ${p.nome} — ${p.flexoes} flexões
-          </div>
-        `;
-      });
-    }
+function getClassName(category) {
+switch (category) {
+case "Mythic":
+return "mythic";
+case "Legend":
+return "legend";
+case "Epic":
+return "epic";
+default:
+return "veterano";
+}
+}
+
+function render(lista) {
+
+const ranking = document.getElementById("ranking");
+ranking.innerHTML = "";
+
+let guildXP = 0;
+
+lista.forEach((player, index) => {
+
+guildXP += player.flexoes;
+
+const categoria = getCategory(player.flexoes);
+const classe = getClassName(categoria);
+const nivel = Math.floor(player.flexoes / 10);
+
+ranking.innerHTML += `
+  <div class="player-card ${classe}">
+
+    <div class="player-name">
+      #${index + 1} ${player.nome}
+    </div>
+
+    <div class="player-info">
+      ${categoria} • Lv ${nivel}
+    </div>
+
+    <div class="player-info">
+      ${player.flexoes} flexões
+    </div>
+
+  </div>
+`;
+
+});
+
+document.getElementById("guildText").innerText =
+guildXP + " / 10000 XP";
+
+const porcentagem =
+Math.min((guildXP / 10000) * 100, 100);
+
+document.getElementById("guildBar").style.width =
+porcentagem + "%";
+}
 
     // 🔥 FUNÇÃO DO BOTÃO (REGISTRAR FLEXÕES)
     window.addPushups = function () {
