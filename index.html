@@ -1,62 +1,95 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Arena das Flexões</title>
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
+
+    #ranking {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .item {
+      padding: 8px;
+      margin: 5px;
+      background: #222;
+      border-radius: 8px;
+    }
+  </style>
 </head>
+
 <body>
 
-  <div class="background"></div>
+  <h1>🏆 Arena das Flexões</h1>
 
-  <main class="container">
+  <div id="ranking">Carregando ranking...</div>
 
-    <header class="hero">
-      <h1>⚔️ ARENA DAS FLEXÕES ⚔️</h1>
-      <p>O Reino dos Guerreiros das Flexões</p>
-    </header>
+  <!-- 🔥 FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-    <section class="guild-box">
-      <h2>🔥 Guild XP</h2>
+    // 🔴 COLE SEU CONFIG AQUI
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_PROJETO.firebaseapp.com",
+      databaseURL: "https://SEU_PROJETO-default-rtdb.firebaseio.com",
+      projectId: "SEU_PROJETO",
+      storageBucket: "SEU_PROJETO.appspot.com",
+      messagingSenderId: "XXXX",
+      appId: "XXXX"
+    };
 
-      <div class="progress">
-        <div id="guildBar" class="progress-fill"></div>
-      </div>
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-      <p id="guildText">0 / 10000 XP</p>
-    </section>
+    const playersRef = ref(db, "players");
 
-    <section class="register-box">
-      <h2>Registrar Flexões</h2>
+    // 🔥 Tempo real
+    onValue(playersRef, (snapshot) => {
+      const data = snapshot.val();
 
-      <input
-        type="text"
-        id="playerName"
-        placeholder="Seu nome"
-      >
+      if (!data) {
+        document.getElementById("ranking").innerHTML = "Sem dados ainda.";
+        return;
+      }
 
-      <input
-        type="number"
-        id="pushups"
-        placeholder="Quantidade de flexões"
-      >
+      let lista = [];
 
-      <button onclick="addPushups()">
-        Registrar Treino
-      </button>
-    </section>
+      for (let id in data) {
+        lista.push({
+          nome: data[id].name,
+          flexoes: data[id].flexoes
+        });
+      }
 
-    <section class="ranking-box">
-      <h2>🏆 Ranking dos Guerreiros</h2>
+      lista.sort((a, b) => b.flexoes - a.flexoes);
 
-      <div id="ranking"></div>
-    </section>
+      render(lista);
+    });
 
-  </main>
+    function render(lista) {
+      const div = document.getElementById("ranking");
+      div.innerHTML = "";
 
-  <script src="script.js"></script>
+      lista.forEach((p, i) => {
+        div.innerHTML += `
+          <div class="item">
+            ${i + 1}º ${p.nome} — ${p.flexoes} flexões
+          </div>
+        `;
+      });
+    }
+
+  </script>
 
 </body>
 </html>
