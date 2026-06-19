@@ -98,12 +98,17 @@ button:hover{
 }
 
 .player-card{
-    background:#3b225f;
     color:white;
-    border-radius:12px;
-    padding:15px;
-    margin-bottom:12px;
-    border-left:6px solid gold;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.player-card:hover{
+    transform:translateY(-3px);
 }
 
 .player-name{
@@ -112,22 +117,64 @@ button:hover{
 }
 
 .player-info{
-    margin-top:5px;
-    color:#ddd;
+    margin-top:6px;
+    opacity:.95;
 }
 
+/* MYTHIC */
 .mythic{
-    border-left-color:#00d4ff;
+    background:linear-gradient(135deg,#2a003f,#5d1ca8,#8a2be2);
+    border-left:8px solid #c084ff;
+    box-shadow:0 0 20px rgba(138,43,226,.7);
 }
 
+/* LEGEND */
 .legend{
-    border-left-color:#d7b300;
+    background:linear-gradient(135deg,#4d3900,#7d5f00,#d4af37);
+    border-left:8px solid gold;
+    box-shadow:0 0 20px rgba(255,215,0,.6);
 }
 
+/* EPIC */
 .epic{
-    border-left-color:#b100ff;
+    background:linear-gradient(135deg,#4c2a63,#7b42a8,#c89bff);
+    border-left:8px solid #d8b4ff;
+    box-shadow:0 0 20px rgba(216,180,255,.5);
 }
 
+/* VETERANO */
 .veterano{
-    border-left-color:#777;
+    background:linear-gradient(135deg,#444,#666,#888);
+    border-left:8px solid #c0c0c0;
+    box-shadow:0 0 15px rgba(200,200,200,.3);
+}
+
+/* PÓDIO */
+
+.rank-1{
+    transform:scale(1.05);
+    border:3px solid gold;
+    box-shadow:0 0 30px rgba(255,215,0,.8);
+}
+
+.rank-2{
+    border:3px solid silver;
+    box-shadow:0 0 20px rgba(192,192,192,.7);
+}
+
+.rank-3{
+    border:3px solid #cd7f32;
+    box-shadow:0 0 20px rgba(205,127,50,.7);
+}
+
+.rank-1 .player-name::before{
+    content:"👑 ";
+}
+
+.rank-2 .player-name::before{
+    content:"🥈 ";
+}
+
+.rank-3 .player-name::before{
+    content:"🥉 ";
 }
