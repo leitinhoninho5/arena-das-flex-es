@@ -6,9 +6,10 @@
 
 body{
     font-family: Georgia, serif;
-    background: linear-gradient(180deg,#1b102e,#2a1742,#140b21);
-    color:#f5e6c8;
+    background:
+    radial-gradient(circle at top,#4d2575,#241038,#12081d);
     min-height:100vh;
+    color:#f8e8c4;
 }
 
 .container{
@@ -17,33 +18,50 @@ body{
     padding:20px;
 }
 
+/* TÍTULO */
+
 .hero{
     text-align:center;
-    margin-top:20px;
-    margin-bottom:30px;
+    margin:20px 0 30px;
 }
 
 .hero h1{
     font-size:3rem;
-    color:#ffd27a;
-    text-shadow:0 0 15px rgba(255,210,122,.5);
+    color:#ffd77d;
+    text-shadow:
+    0 0 10px rgba(255,215,125,.8),
+    0 0 30px rgba(255,215,125,.4);
 }
 
 .hero p{
-    color:#d8c49a;
+    color:#e3d0a3;
     margin-top:10px;
 }
+
+/* CAIXAS */
 
 .guild-box,
 .register-box,
 .ranking-box{
-    background:#e8d7b5;
-    color:#2b1b10;
-    border:4px solid #7b5b2f;
-    border-radius:15px;
+    background:
+    linear-gradient(
+        180deg,
+        #f3e2bc,
+        #ead4a8
+    );
+
+    color:#2f1c09;
+
+    border:4px solid #7d5b2b;
+
+    border-radius:20px;
+
     padding:20px;
+
     margin-bottom:25px;
-    box-shadow:0 0 20px rgba(0,0,0,.4);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
 }
 
 .guild-box h2,
@@ -52,58 +70,93 @@ body{
     margin-bottom:15px;
 }
 
+/* GUILD XP */
+
 .progress{
     width:100%;
     height:30px;
-    background:#c8b189;
-    border-radius:20px;
+    background:#c7af82;
+    border-radius:30px;
     overflow:hidden;
+    border:2px solid #7d5b2b;
 }
 
 .progress-fill{
     height:100%;
     width:0%;
-    background:gold;
+
+    background:
+    linear-gradient(
+        90deg,
+        #ffb700,
+        #ffd700,
+        #fff4a3
+    );
+
     transition:.4s;
 }
 
 #guildText{
     margin-top:10px;
     font-weight:bold;
+    text-align:center;
 }
+
+/* FORM */
 
 input{
     width:100%;
     padding:12px;
     margin-bottom:10px;
-    border-radius:10px;
+
     border:none;
+    border-radius:12px;
+
     font-size:16px;
 }
 
 button{
     width:100%;
     padding:14px;
-    background:#5e3b13;
-    color:white;
+
     border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        180deg,
+        #7b4b14,
+        #5b350e
+    );
+
+    color:white;
+
     font-weight:bold;
+    font-size:16px;
+
+    cursor:pointer;
 }
 
 button:hover{
-    opacity:.9;
+    opacity:.92;
 }
 
+/* RANKING */
+
 .player-card{
-    color:white;
-    border-radius:15px;
+
+    border-radius:18px;
+
     padding:18px;
-    margin-bottom:15px;
-    transition:.3s;
+
+    margin-bottom:14px;
+
+    color:white;
+
     position:relative;
+
+    transition:.25s;
+
     overflow:hidden;
 }
 
@@ -111,60 +164,113 @@ button:hover{
     transform:translateY(-3px);
 }
 
+/* NOME */
+
 .player-name{
-    font-size:22px;
+    font-size:26px;
     font-weight:bold;
 }
 
 .player-info{
-    margin-top:6px;
-    opacity:.95;
+    margin-top:5px;
+    font-size:15px;
 }
 
 /* MYTHIC */
+
 .mythic{
-    background:linear-gradient(135deg,#2a003f,#5d1ca8,#8a2be2);
-    border-left:8px solid #c084ff;
-    box-shadow:0 0 20px rgba(138,43,226,.7);
+
+    background:
+    linear-gradient(
+        135deg,
+        #2d0047,
+        #5b1ca8,
+        #8f3cff
+    );
+
+    border-left:10px solid #d5b2ff;
+
+    box-shadow:
+    0 0 25px rgba(143,60,255,.55);
 }
 
 /* LEGEND */
+
 .legend{
-    background:linear-gradient(135deg,#4d3900,#7d5f00,#d4af37);
-    border-left:8px solid gold;
-    box-shadow:0 0 20px rgba(255,215,0,.6);
+
+    background:
+    linear-gradient(
+        135deg,
+        #5a4300,
+        #8f6800,
+        #d4af37
+    );
+
+    border-left:10px solid gold;
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,.45);
 }
 
 /* EPIC */
+
 .epic{
-    background:linear-gradient(135deg,#4c2a63,#7b42a8,#c89bff);
-    border-left:8px solid #d8b4ff;
-    box-shadow:0 0 20px rgba(216,180,255,.5);
+
+    background:
+    linear-gradient(
+        135deg,
+        #45295f,
+        #6d3f97,
+        #c79cff
+    );
+
+    border-left:10px solid #e0bfff;
+
+    box-shadow:
+    0 0 20px rgba(199,156,255,.45);
 }
 
 /* VETERANO */
+
 .veterano{
-    background:linear-gradient(135deg,#444,#666,#888);
-    border-left:8px solid #c0c0c0;
-    box-shadow:0 0 15px rgba(200,200,200,.3);
+
+    background:
+    linear-gradient(
+        135deg,
+        #555,
+        #777,
+        #999
+    );
+
+    border-left:10px solid #ddd;
+
+    box-shadow:
+    0 0 15px rgba(255,255,255,.15);
 }
 
 /* PÓDIO */
 
 .rank-1{
-    transform:scale(1.05);
+    transform:scale(1.04);
+
     border:3px solid gold;
-    box-shadow:0 0 30px rgba(255,215,0,.8);
+
+    box-shadow:
+    0 0 35px rgba(255,215,0,.8);
 }
 
 .rank-2{
     border:3px solid silver;
-    box-shadow:0 0 20px rgba(192,192,192,.7);
+
+    box-shadow:
+    0 0 25px rgba(192,192,192,.7);
 }
 
 .rank-3{
     border:3px solid #cd7f32;
-    box-shadow:0 0 20px rgba(205,127,50,.7);
+
+    box-shadow:
+    0 0 25px rgba(205,127,50,.7);
 }
 
 .rank-1 .player-name::before{
@@ -177,4 +283,18 @@ button:hover{
 
 .rank-3 .player-name::before{
     content:"🥉 ";
+}
+
+/* SCROLL MOBILE */
+
+@media(max-width:700px){
+
+    .hero h1{
+        font-size:2.2rem;
+    }
+
+    .player-name{
+        font-size:20px;
+    }
+
 }
